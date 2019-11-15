@@ -21,6 +21,7 @@ namespace Vektorel.Windows.KacanButonApp
         private void Button1_Click(object sender, EventArgs e)
         {
             //GitHub'a proje yükleme - Vs GitHub extension 
+            //Repository -> Depo
         }
 
         private void Button1_MouseMove(object sender, MouseEventArgs e)
