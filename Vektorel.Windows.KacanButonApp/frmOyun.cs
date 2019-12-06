@@ -14,6 +14,7 @@ namespace Vektorel.Windows.KacanButonApp
     {
         int count = 0;
         int sure = 5;
+        List<int> skorlar = new List<int>(); //yeniden oynamak istediğinde skorlar koleksiyonuna eski skorları ekleyeceğiz. 
         public frmOyun()
         {
             InitializeComponent();
@@ -45,10 +46,12 @@ namespace Vektorel.Windows.KacanButonApp
             this.Text = sure.ToString();
             if (sure==0)
             {
+                skorlar.Add(count);
                 tmrSure.Stop();
                 DialogResult cvp = MessageBox.Show($"Süreniz doldu , puanınız:{ count}\n Yeniden oynamak istiyor musunuz?", "Oyun bitti",MessageBoxButtons.YesNo,MessageBoxIcon.Question );
                 if (cvp == DialogResult.Yes)
                 {
+                    
                     sure = 5;
                     count = 0;
                     btnKac.Text = count.ToString();
@@ -57,6 +60,15 @@ namespace Vektorel.Windows.KacanButonApp
                 }
                 else
                 {
+                    int max=0;
+                    foreach (int item in skorlar)
+                    {
+                        if (item> max)
+                        {
+                            max = item;
+                        }
+                    }
+                    MessageBox.Show($"Oyun Bitti. En yüksek skourunuz:{max}");
                     btnKac.Text = ":D";
                     btnKac.Enabled = false;
                 }
